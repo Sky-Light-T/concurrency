@@ -14,4 +14,16 @@ public class ConcurrencyApplication extends WebMvcConfigurerAdapter{
 		SpringApplication.run(ConcurrencyApplication.class, args);
 	}
 
+	@Bean
+	public FilterRegistrationBean httpFilter() {
+		FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+		registrationBean.setFilter(new HttpFilter());
+		registrationBean.addUrlPatterns("/threadLocal/*");
+		return registrationBean;
+	}
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/**");
+	}
 }

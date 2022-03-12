@@ -11,6 +11,7 @@ public class UnsafePublish {
 
     private String[] states = {"a", "b", "c"};
 
+    //返回private域的引用，任何线程都可以修改，因此是线程不安全的
     public String[] getStates() {
         return states;
     }

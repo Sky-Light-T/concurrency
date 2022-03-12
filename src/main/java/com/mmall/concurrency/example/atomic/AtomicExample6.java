@@ -1,5 +1,6 @@
 package com.mmall.concurrency.example.atomic;
 
+
 import com.mmall.concurrency.annoations.ThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,6 +44,7 @@ public class AtomicExample6 {
     }
 
     private static void test() {
+        //如果需要某一段代码只执行一次，可以使用AtomicBoolean的compareAndSet方法
         if (isHappened.compareAndSet(false, true)) {
             log.info("execute");
         }
